@@ -49,11 +49,11 @@
           "type": "VirtualMachine",
           "settings": {
             "vmCount": 1,
-            "namePrefix": "ra-single-windows",
+            "namePrefix": "PrdRfd",
             "computerNamePrefix": "web",
             "size": "Standard_DS1_v2",
-            "adminUsername": "",
-            "adminPassword": "",
+            "adminUsername": "testdeploy",
+            "adminPassword": "#FarOFlyg666!",
             "virtualNetwork": {
               "name": "ra-single-windows-vm-vnet"
             },
@@ -65,48 +65,38 @@
             "osType": "windows",
             "dataDisks": {
               "count": 2
-            }
-          }
-        },
-        {
-          "type": "VirtualMachineExtension",
-          "settings": [
-            {
-              "vms": [
-                "ra-single-windows-vm1"
-              ],
-              "extensions": [
-                {
-                  "name": "format-disks",
-                  "publisher": "Microsoft.Compute",
-                  "type": "CustomScriptExtension",
-                  "typeHandlerVersion": "1.8",
-                  "autoUpgradeMinorVersion": true,
-                  "settings": {
-                    "fileUris": [
-                      "https://raw.githubusercontent.com/mspnp/reference-architectures/master/scripts/windows/format-disk.ps1",
-                      "https://raw.githubusercontent.com/mspnp/reference-architectures/master/virtual-machines/single-vm/extensions/windows/format-disks.ps1"
-                    ]
-                  },
-                  "protectedSettings": {
-                    "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File format-disks.ps1"
-                  }
+            },
+            "extensions": [
+              {
+                "name": "format-disks",
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.8",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                  "fileUris": [
+                    "https://raw.githubusercontent.com/mspnp/reference-architectures/master/scripts/windows/format-disk.ps1",
+                    "https://raw.githubusercontent.com/mspnp/reference-architectures/master/virtual-machines/single-vm/extensions/windows/format-disks.ps1"
+                  ]
                 },
-                {
-                  "name": "iis-config-ext",
-                  "publisher": "Microsoft.Powershell",
-                  "type": "DSC",
-                  "typeHandlerVersion": "2.1",
-                  "autoUpgradeMinorVersion": true,
-                  "settings": {
-                    "ModulesUrl": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/scripts/windows/iisaspnet.ps1.zip",
-                    "configurationFunction": "iisaspnet.ps1\\iisaspnet"
-                  },
-                  "protectedSettings": {}
-                }                
-              ]
-            }
-          ]
+                "protectedSettings": {
+                  "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File format-disks.ps1"
+                }
+              },
+              {
+                "name": "iis-config-ext",
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.1",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                  "ModulesUrl": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/scripts/windows/iisaspnet.ps1.zip",
+                  "configurationFunction": "iisaspnet.ps1\\iisaspnet"
+                },
+                "protectedSettings": {}
+              }
+            ] 
+          }
         }
       ]
     }
