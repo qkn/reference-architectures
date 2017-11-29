@@ -49,11 +49,11 @@
           "type": "VirtualMachine",
           "settings": {
             "vmCount": 1,
-            "namePrefix": "PrdRfd",
+            "namePrefix": "ra-single-windows",
             "computerNamePrefix": "web",
             "size": "Standard_DS1_v2",
-            "adminUsername": "testdeploy",
-            "adminPassword": "#FarOFlyg666!",
+            "adminUsername": "",
+            "adminPassword": "",
             "virtualNetwork": {
               "name": "ra-single-windows-vm-vnet"
             },
